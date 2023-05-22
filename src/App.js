@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 
 import GridBoard from './components/GridBoard'
+import NextBlock from './components/NextBlock';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <hl className="App-title">Tetris Redux</hl>
       </header>
       <GridBoard />
+      <NextBlock />
     </div>
   );
 }

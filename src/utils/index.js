@@ -163,7 +163,7 @@ export const shapes = [
                 }
                 const possibleRow = grid[proposedY];
                 if(possibleRow) {
-                    if(possibleRow[proposedX] === undefined) {
+                    if(possibleRow[proposedX] === undefined || possibleRow[proposedX] !== 0) {
                         return false
                     }
                 } else {

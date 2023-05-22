@@ -138,7 +138,7 @@ export const shapes = [
         shape: randomShape(),
         rotation: 0,
         x: 5,
-        y: -4,
+        y: 0,
         nextShape: randomShape(),
         isRunning: true,
         score: 0,
@@ -172,6 +172,7 @@ export const shapes = [
             }
         }
     }
+
     return true
 }
 

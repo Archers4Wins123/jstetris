@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { moveDown } from "../actions";
 import { moveLeft } from "../actions";
 import { moveRight } from "../actions";
@@ -9,6 +9,28 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function Controls(props) {
     const dispatch = useDispatch()
     const isRunning = useSelector((state) => state.isRunning)
+
+    useEffect(() => {
+        const handleArrowKeys = (event) => {
+            if (event.keyCode === 37) {
+                dispatch(moveLeft())
+            }
+            if (event.keyCode === 38) {
+                dispatch(rotate())
+            }
+            if (event.keyCode === 39) {
+                dispatch(moveRight())
+            }
+            if (event.keyCode === 40) {
+                dispatch(moveDown())
+            }
+        };
+        window.addEventListener('keydown', handleArrowKeys);
+
+        return () => {
+            window.removeEventListener('keydown', handleArrowKeys);
+        };
+    }, []);
     return (
         <div className="controls">
             {/* left */}

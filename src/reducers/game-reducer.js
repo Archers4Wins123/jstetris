@@ -39,7 +39,14 @@ import {
             if (canMoveTo(shape, grid, x, maybeY, rotation)) {
                 return {...state, y: maybeY}
             }
-            const newGrid = addBlockToGrid(shape, grid, x, y, rotation)
+            const obj = addBlockToGrid(shape, grid, x, y, rotation)
+            const newGrid = obj.grid;
+            if (obj.gameOver) {
+                const newState = {...state}
+                newState.shape = 0
+                newState.grid = newGrid
+                return {...newState, gameOver: true}
+            }
             const newState = defaultState()
             newState.grid = newGrid
             newState.shape = nextShape

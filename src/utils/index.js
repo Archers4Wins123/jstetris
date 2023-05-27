@@ -179,6 +179,9 @@ export const shapes = [
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
     const block = shapes[shape][rotation];
     const newGrid = [...grid];
+    if (y<3 && !canMoveTo(shape, grid, x, y, rotation)) {
+        return {grid: newGrid, gameOver: true}
+    }
     for (let row = 0; row < block.length; row++) {
         for (let col = 0; col < block[row].length; col++) {
             if(block[row][col]) {
@@ -186,7 +189,7 @@ export const addBlockToGrid = (shape, grid, x, y, rotation) => {
             }
         }
     }
-    return newGrid;
+    return {grid: newGrid, gameOver: false};
 }
 
 export const checkRows = (grid) => {
